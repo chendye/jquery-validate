@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		
+		form{
+			position: absolute;
+		    background: antiquewhite;
+		    margin: auto;
+		    width: 500px;
+		    height: 600px;
+		    top: 0;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		    text-align: left;
+		    padding: 10px;
+		}
+		div{
+			padding: 10px;
+		}
+		label{
+			display: block;
+		}
+		input,select{
+			min-width: 200px;
+			padding: 3px;
+		}
+		.error label{
+			color: red;
+		}
+		.error input,
+		.error select{
+			border: 1px solid red;
+		}
+	</style>
+	<body>
+		<form action="javascript:void(1);" method="post" id="demo">
+			<div>
+				<label>姓名：（必须输入）</label>
+				<input type="text" va-name="姓名" va-rules="required"/>
+			</div>
+			<div>
+				<label>年龄：（必须输入&正整数）</label>
+				<input type="text" va-name="年龄" va-rules="integer&required" va-min="10" va-max="20"/>
+			</div>
+			<div>
+				<label>电话1：（必须输入&正整数&手机号码&ajax验证不重复）</label>
+				<input type="text" va-name="电话1" va-rules="required&telephone&remote&integer" va-url="data/test1.json" va-paraname="tel1" va-morepara="id:0038" />
+			</div>
+			<div>
+				<label>电话2：（不必须输入&正整数&手机号码&ajax验证不重复）</label>
+				<input type="text" va-name="电话2" va-rules="telephone&remote&integer" va-url="data/test2.json" va-paraname="tel2" va-morepara="id:0038" />
+			</div>
+			<div>
+				<label>身高：（不必须输入&1位小数的整数）</label>
+				<input type="text" va-name="身高" va-rules="decimal1"/>
+			</div>
+			<div>
+				<label>爱好：（必选）</label>
+				<select va-name="爱好" va-rules="required">
+					<option value></option>
+					<option value="1">电影</option>
+					<option value="2">篮球</option>
+					<option value="3">码砖</option>
+				</select>
+			</div>
+			<label style="margin-top: 20px;margin-left: 10px;"><input type="submit" value="提交"/> </label>
+			<label style="margin-top: 20px;margin-left: 10px;"><input type="reset" value="重置"/></label>
+		</form>
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="js/jquery-validate-beta.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			var va=	$("#demo").validate({
+				onAjaxJudge:function(d){
+					if(d.errorCode===300){
+						return "已存在。"
+					}
+				}
+			});
+			
+			$("input[type=submit]").click(function(){
+				va.validateAll(function(){
+					alert("全部验证通过。")
+				});
+			})
+			$("input[type=button]").click(function(){
+				va.validateAll();
+			})
+		})
+	</script>
+</html>
