@@ -1,0 +1,23 @@
+{
+  "name": "jquery-validate",
+  "title": "validate plugin",
+  "description": "a validate form input plugin",
+  "version": "1.0.0",
+  "homepage": "https://github.com/chendye/jquery-validate",
+  "author": {
+    "name": "chendye",
+    "email": "1025635227@qq.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:chendye/jquery-validate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chendye/jquery-validate/issues"
+  },
+  "licenses": [],
+  "dependencies": {
+    "jQuery": "*"
+  },
+  "keywords": ["validate"]
+}
