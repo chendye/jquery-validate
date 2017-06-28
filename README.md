@@ -1,4 +1,4 @@
-# jquery-validate 2.1.1（IE9+）88
+# jquery-validate 2.1.1（IE9+）
 
 1. 只做正确性验证，无任何默认ui（可通过回调的配置实现ui显示）；
 2. 四类规则任意组合；
